@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ../../base
   - https://github.com/redhat-appstudio/service-provider-integration-operator/config/overlays/openshift_vault?ref=fab3eedb5b7359023e70201f925ed93e24522fcc
+  - https://github.com/mshaposhnik/service-provider-integration-operator/config/monitoring/servicemonitor?ref=823bbd909cf8f22cc2dedbfb832b5f140dcbe9c1
 
 namespace: spi-system
 
