@@ -10,15 +10,8 @@ images:
   - name:  quay.io/redhat-appstudio/service-provider-integration-operator
     newName: quay.io/redhat-appstudio/service-provider-integration-operator
     newTag: 34ae088dc064be78744886fff32e956cfd475591
-  - name: quay.io/redhat-appstudio/service-provider-integration-oauth
-    newName: quay.io/redhat-appstudio/service-provider-integration-oauth
-    newTag: 34ae088dc064be78744886fff32e956cfd475591
 
 patches:
-  - target:
-      kind: ConfigMap
-      name: oauth-service-environment-config
-    path: oauth-service-config-patch.json
   - target:
       kind: ConfigMap
       name: shared-environment-config
