@@ -48,6 +48,9 @@ spec:
       key: token
     tlsConfig:
       insecureSkipVerify: true
+  namespaceSelector:
+    matchNames:
+    - multi-platform-controller
   selector:
     matchLabels:
       control-plane: controller-manager
