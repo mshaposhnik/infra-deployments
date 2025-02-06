@@ -1,18 +1,14 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-
 namespace: multi-platform-controller
-
 resources:
-- common
-- https://github.com/konflux-ci/multi-platform-controller/deploy/operator?ref=9ac7316241077681f7a4d6d5f28854ae399a37b0
-- https://github.com/konflux-ci/multi-platform-controller/deploy/otp?ref=9ac7316241077681f7a4d6d5f28854ae399a37b0
-
-
+  - common
+  - https://github.com/mshaposhnik/multi-platform-controller/deploy/operator?ref=a9565c303fb352d8bdef3eea18c8118905585c35
+  - https://github.com/mshaposhnik/multi-platform-controller/deploy/otp?ref=a9565c303fb352d8bdef3eea18c8118905585c35
 images:
-- name: multi-platform-controller
-  newName: quay.io/konflux-ci/multi-platform-controller
-  newTag: 9ac7316241077681f7a4d6d5f28854ae399a37b0
-- name: multi-platform-otp-server
-  newName: quay.io/konflux-ci/multi-platform-controller-otp-service
-  newTag: 9ac7316241077681f7a4d6d5f28854ae399a37b0
+  - name: multi-platform-controller
+    newName: quay.io/mshaposhnik/multi-platform-controller
+    newTag: dev
+  - name: multi-platform-otp-server
+    newName: quay.io/konflux-ci/multi-platform-controller-otp-service
+    newTag: 9ac7316241077681f7a4d6d5f28854ae399a37b0
