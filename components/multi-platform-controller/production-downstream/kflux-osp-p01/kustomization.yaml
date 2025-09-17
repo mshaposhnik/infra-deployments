@@ -5,8 +5,14 @@ namespace: multi-platform-controller
 
 resources:
 - ../base
-- host-config.yaml
 - external-secrets.yaml
 
 patches:
   - path: manager_resources_patch.yaml
+
+helmCharts:
+- name: multi-platform-controller-host-config
+  releaseName: host-config
+  namespace: multi-platform-controller
+  repo: ../../base
+  valuesFile: values-kflux-osp-p01.yaml
