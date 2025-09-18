@@ -298,7 +298,7 @@ data:
   dynamic.linux-d160-m2xlarge-amd64.region: us-east-1
   dynamic.linux-d160-m2xlarge-amd64.ami: ami-026ebd4cfe2c043b2
   dynamic.linux-d160-m2xlarge-amd64.instance-type: m6a.2xlarge
-  dynamic.linux-d160-m2xlarge-amd64.instance-tag: prod-amd64-m2xlarge-d160
+  dynamic.linux-d160-m2xlarge-amd64.instance-tag: prod-amd64-m2xlarge-d160prod-amd64-m2xlarge-d160
   dynamic.linux-d160-m2xlarge-amd64.key-name: konflux-prod-ext-mab01
   dynamic.linux-d160-m2xlarge-amd64.aws-secret: aws-account
   dynamic.linux-d160-m2xlarge-amd64.ssh-secret: aws-ssh-key
@@ -477,7 +477,7 @@ data:
   dynamic.linux-fast-amd64.region: us-east-1
   dynamic.linux-fast-amd64.ami: ami-026ebd4cfe2c043b2
   dynamic.linux-fast-amd64.instance-type: c7a.8xlarge
-  dynamic.linux-fast-amd64.instance-tag: prod-amd64-fast
+  dynamic.linux-fast-amd64.instance-tag: prod-amd64-fastprod-amd64-fast
   dynamic.linux-fast-amd64.key-name: konflux-prod-ext-mab01
   dynamic.linux-fast-amd64.aws-secret: aws-account
   dynamic.linux-fast-amd64.ssh-secret: aws-ssh-key

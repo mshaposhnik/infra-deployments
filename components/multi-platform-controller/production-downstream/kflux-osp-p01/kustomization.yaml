@@ -15,4 +15,4 @@ helmCharts:
   releaseName: host-config
   namespace: multi-platform-controller
   repo: ../../base
-  valuesFile: values-kflux-osp-p01.yaml
+  valuesFile: host-values.yaml

@@ -18,7 +18,7 @@ helmCharts:
   releaseName: host-config
   namespace: multi-platform-controller
   repo: ../../base
-  valuesFile: values-stone-prd-rh01.yaml
+  valuesFile: host-values.yaml
 
 images:
 - name: multi-platform-controller

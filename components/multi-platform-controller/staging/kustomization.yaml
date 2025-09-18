@@ -12,6 +12,6 @@ helmCharts:
   releaseName: host-config
   namespace: multi-platform-controller
   repo: file://../base
-  valuesFile: values-staging.yaml
+  valuesFile: host-values.yaml
 
 namespace: multi-platform-controller

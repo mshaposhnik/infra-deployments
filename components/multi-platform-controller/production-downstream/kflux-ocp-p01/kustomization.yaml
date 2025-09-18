@@ -13,4 +13,4 @@ helmCharts:
   releaseName: host-config
   namespace: multi-platform-controller
   repo: ../../base
-  valuesFile: values-kflux-ocp-p01.yaml
+  valuesFile: host-values.yaml
