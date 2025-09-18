@@ -8,13 +8,16 @@ archDefaults:
   amd64:
     ami: "ami-026ebd4cfe2c043b2"
     key-name: "konflux-prod-int-mab01"
-    security-group-id: "sg-0fbf35ced0d59fd4a"
+    security-group-id: "sg-0903aedd465be979e"
     subnet-id: "subnet-02c476f8d2a4ae05e"
 
 
 dynamicConfigs:
   linux-arm64:
     instance-tag: "prod-arm64"
+
+  linux-amd64:
+    instance-tag: "prod-amd64"
 
   linux-mlarge-arm64:
     instance-tag: "prod-arm64-mlarge"
@@ -34,17 +37,35 @@ dynamicConfigs:
   linux-m2xlarge-amd64:
     instance-tag: "prod-amd64-m2xlarge"
 
+  linux-d160-m2xlarge-arm64:
+    instance-tag: "prod-arm64-m2xlarge-d160"
+
+  linux-d160-m2xlarge-amd64:
+    instance-tag: "prod-amd64-m2xlarge-d160"
+
   linux-m4xlarge-arm64:
     instance-tag: "prod-arm64-m4xlarge"
 
   linux-m4xlarge-amd64:
     instance-tag: "prod-amd64-m4xlarge"
 
+  linux-d160-m4xlarge-arm64:
+    instance-tag: "prod-arm64-m4xlarge-d160"
+
+  linux-d160-m4xlarge-amd64:
+    instance-tag: "prod-amd64-m4xlarge-d160"
+
   linux-m8xlarge-arm64:
     instance-tag: "prod-arm64-m8xlarge"
 
   linux-m8xlarge-amd64:
     instance-tag: "prod-amd64-m8xlarge"
+
+  linux-d160-m8xlarge-arm64:
+    instance-tag: "prod-arm64-m8xlarge-d160"
+
+  linux-d160-m8xlarge-amd64:
+    instance-tag: "prod-amd64-m8xlarge-d160"
 
   linux-c6gd2xlarge-arm64:
     instance-tag: "prod-arm64-c6gd2xlarge"
@@ -285,6 +306,12 @@ dynamicConfigs:
       restorecon -r /home/ec2-user
       
       --//--
+
+  linux-fast-amd64:
+    instance-tag: "prod-amd64-fast"
+
+  linux-extra-fast-amd64:
+    instance-tag: "prod-amd64-extra-fast"
 
 # Static hosts configuration
 staticHosts:

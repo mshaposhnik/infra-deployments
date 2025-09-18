@@ -13,4 +13,4 @@ helmCharts:
   releaseName: host-config
   namespace: multi-platform-controller
   repo: ../../base
-  valuesFile: values-stone-prod-p02.yaml
+  valuesFile: host-values.yaml

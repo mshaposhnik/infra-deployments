@@ -16,6 +16,9 @@ dynamicConfigs:
   linux-arm64:
     instance-tag: "prod-arm64"
 
+  linux-amd64:
+    instance-tag: "prod-amd64"
+
   linux-mlarge-arm64:
     instance-tag: "prod-arm64-mlarge"
 
@@ -51,6 +54,12 @@ dynamicConfigs:
 
   linux-m8xlarge-amd64:
     instance-tag: "prod-amd64-m8xlarge"
+
+  linux-d160-m7-8xlarge-amd64:
+    instance-tag: "prod-amd64-m7-8xlarge-d160"
+
+  linux-d160-m8-8xlarge-arm64:
+    instance-tag: "prod-arm64-m8-8xlarge-d160"
 
   linux-c6gd2xlarge-arm64:
     instance-tag: "prod-arm64-c6gd2xlarge"
@@ -143,12 +152,18 @@ dynamicConfigs:
   linux-c8xlarge-amd64:
     instance-tag: "prod-amd64-c8xlarge"
 
+  linux-d160-c8xlarge-arm64:
+    instance-tag: "prod-arm64-c8xlarge-d160"
+
+  linux-d160-c8xlarge-amd64:
+    instance-tag: "prod-amd64-c8xlarge-d160"
+
   linux-g4xlarge-amd64:
     instance-tag: "prod-amd64-g4xlarge"
 
-  linux-g6xlarge-amd64:
-    ami: "ami-0ad6c6b0ac6c36199"
-    instance-tag: "prod-amd64-g6xlarge"
+  linux-g64xlarge-amd64:
+    ami: "ami-011ef093b05cb7415"
+    instance-tag: "prod-amd64-g64xlarge"
     user-data: |
       Content-Type: multipart/mixed; boundary="//"
       MIME-Version: 1.0
@@ -213,9 +228,11 @@ dynamicConfigs:
       chmod 700 /home/ec2-user/.ssh
       restorecon -r /home/ec2-user
 
-      mkdir -p /etc/cdi
-      chmod a+rwx /etc/cdi
-      su - ec2-user
+      mkdir -p /etc/cdi /var/run/cdi
+      chmod a+rwx /etc/cdi /var/run/cdi
+      
+      setsebool container_use_devices 1
+      
       nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml
       --//--
 

@@ -329,6 +329,8 @@ data:
   dynamic.linux-d160-m7-8xlarge-amd64.subnet-id: subnet-0263af86f44821eac
   dynamic.linux-d160-m7-8xlarge-amd64.disk: "160"
 
+
+
   # cpu:memory (1:2)
   dynamic.linux-cxlarge-arm64.type: aws
   dynamic.linux-cxlarge-arm64.region: us-east-1

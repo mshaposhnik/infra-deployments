@@ -2,18 +2,22 @@
 archDefaults:
   arm64:
     ami: "ami-03d6a5256a46c9feb"
-    key-name: " pentest-p01-key-pair"
-    security-group-id: "sg-0811f7092bfeb3e84"
-    subnet-id: "subnet-06232fb3beb5542cf"
+    key-name: "konflux-prod-int-mab01"
+    security-group-id: "sg-0903aedd465be979e"
+    subnet-id: "subnet-0aa719a6c5b602b16"
   amd64:
     ami: "ami-026ebd4cfe2c043b2"
-    key-name: " pentest-p01-key-pair"
-    security-group-id: "sg-0811f7092bfeb3e84"
-    subnet-id: "subnet-06232fb3beb5542cf"
+    key-name: "konflux-prod-int-mab01"
+    security-group-id: "sg-0903aedd465be979e"
+    subnet-id: "subnet-0aa719a6c5b602b16"
+
 
 dynamicConfigs:
   linux-arm64:
     instance-tag: "prod-arm64"
+
+  linux-amd64:
+    instance-tag: "prod-amd64"
 
   linux-mlarge-arm64:
     instance-tag: "prod-arm64-mlarge"
@@ -33,17 +37,35 @@ dynamicConfigs:
   linux-m2xlarge-amd64:
     instance-tag: "prod-amd64-m2xlarge"
 
+  linux-d160-m2xlarge-arm64:
+    instance-tag: "prod-arm64-m2xlarge-d160"
+
+  linux-d160-m2xlarge-amd64:
+    instance-tag: "prod-amd64-m2xlarge-d160"
+
   linux-m4xlarge-arm64:
     instance-tag: "prod-arm64-m4xlarge"
 
   linux-m4xlarge-amd64:
     instance-tag: "prod-amd64-m4xlarge"
 
+  linux-d160-m4xlarge-arm64:
+    instance-tag: "prod-arm64-m4xlarge-d160"
+
+  linux-d160-m4xlarge-amd64:
+    instance-tag: "prod-amd64-m4xlarge-d160"
+
   linux-m8xlarge-arm64:
     instance-tag: "prod-arm64-m8xlarge"
 
   linux-m8xlarge-amd64:
     instance-tag: "prod-amd64-m8xlarge"
+
+  linux-d160-m8xlarge-arm64:
+    instance-tag: "prod-arm64-m8xlarge-d160"
+
+  linux-d160-m8xlarge-amd64:
+    instance-tag: "prod-amd64-m8xlarge-d160"
 
   linux-c6gd2xlarge-arm64:
     instance-tag: "prod-arm64-c6gd2xlarge"
@@ -214,12 +236,12 @@ dynamicConfigs:
 
   linux-root-arm64:
     instance-tag: "prod-arm64-root"
-    sudo-commands: "/usr/bin/podman"
+    sudo-commands: "/usr/bin/podman, /usr/bin/rm /usr/share/containers/mounts.conf"
     disk: "200"
 
   linux-root-amd64:
     instance-tag: "prod-amd64-root"
-    sudo-commands: "/usr/bin/podman"
+    sudo-commands: "/usr/bin/podman, /usr/bin/rm /usr/share/containers/mounts.conf"
     disk: "200"
     user-data: |-
       Content-Type: multipart/mixed; boundary="//"
@@ -288,47 +310,4 @@ dynamicConfigs:
 
 # Static hosts configuration
 staticHosts:
-  # PPC
-  ppc64le-pi-static-x0:
-    address: "10.130.130.76"
-    concurrency: "8"
-    platform: "linux/ppc64le"
-    secret: "ibm-ppc64le-ssh-key"
-    user: "root"
-
-  ppc64le-pi-static-x1:
-    address: "10.130.130.73"
-    concurrency: "8"
-    platform: "linux/ppc64le"
-    secret: "ibm-ppc64le-ssh-key"
-    user: "root"
-
-  ppc64le-pi-static-x2:
-    address: "10.130.130.75"
-    concurrency: "8"
-    platform: "linux/ppc64le"
-    secret: "ibm-ppc64le-ssh-key"
-    user: "root"
-
-  # s390
-  s390x-static-1:
-    address: "10.130.130.55"
-    concurrency: "4"
-    platform: "linux/s390x"
-    secret: "s390x-static-ssh-key"
-    user: "root"
-
-  s390x-static-2:
-    address: "10.130.130.56"
-    concurrency: "4"
-    platform: "linux/s390x"
-    secret: "s390x-static-ssh-key"
-    user: "root"
-
-  s390x-static-3:
-    address: "10.130.130.57"
-    concurrency: "4"
-    platform: "linux/s390x"
-    secret: "s390x-static-ssh-key"
-    user: "root"
 
