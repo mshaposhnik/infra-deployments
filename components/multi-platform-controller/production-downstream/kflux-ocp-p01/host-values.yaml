@@ -17,6 +17,9 @@ dynamicConfigs:
   linux-arm64:
     instance-tag: "prod-arm64"
 
+  linux-amd64:
+    instance-tag: "prod-amd64"
+
   linux-mlarge-arm64:
     instance-tag: "prod-arm64-mlarge"
 
@@ -58,7 +61,6 @@ dynamicConfigs:
 
   linux-m8xlarge-amd64:
     instance-tag: "prod-amd64-m8xlarge"
-
 
   linux-d160-m8xlarge-arm64:
     instance-tag: "prod-arm64-m8xlarge-d160"

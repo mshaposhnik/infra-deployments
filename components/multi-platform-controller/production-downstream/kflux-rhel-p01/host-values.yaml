@@ -1,5 +1,4 @@
 
-
 archDefaults:
   arm64:
     ami: "ami-048b8750a6016535e" # RHEL 9.6, kernel 5.14.0-570.41.1.el9_6
@@ -9,7 +8,7 @@ archDefaults:
   amd64:
     ami: "ami-0b010c16a8a4b9eac" # RHEL 9.6, kernel 5.14.0-570.41.1.el9_6
     key-name: "kflux-rhel-p01-key-pair"
-    security-group-id: "sg-0fbf35ced0d59fd4a"
+    security-group-id: "sg-0c67a834068be63d6"
     subnet-id: "subnet-0f3208c0214c55e2e"
 
 
@@ -17,35 +16,79 @@ dynamicConfigs:
   linux-arm64:
     instance-tag: "prod-arm64"
 
+  linux-amd64:
+    instance-tag: "prod-amd64"
+    instance-type: "m7a.large"
+
   linux-mlarge-arm64:
     instance-tag: "prod-arm64-mlarge"
 
   linux-mlarge-amd64:
     instance-tag: "prod-amd64-mlarge"
+    instance-type: "m7a.large"
+
+  linux-d160-mlarge-arm64:
+    instance-tag: "prod-arm64-mlarge-d160"
+
+  linux-d160-mlarge-amd64:
+    instance-tag: "prod-amd64-mlarge-d160"
+    instance-type: "m7a.large"
 
   linux-mxlarge-arm64:
     instance-tag: "prod-arm64-mxlarge"
 
   linux-mxlarge-amd64:
     instance-tag: "prod-amd64-mxlarge"
+    instance-type: "m7a.xlarge"
+
+  linux-d160-mxlarge-arm64:
+    instance-tag: "prod-arm64-mxlarge-d160"
+
+  linux-d160-mxlarge-amd64:
+    instance-tag: "prod-amd64-mxlarge-d160"
+    instance-type: "m7a.xlarge"
 
   linux-m2xlarge-arm64:
     instance-tag: "prod-arm64-m2xlarge"
 
   linux-m2xlarge-amd64:
     instance-tag: "prod-amd64-m2xlarge"
+    instance-type: "m7a.2xlarge"
+
+  linux-d160-m2xlarge-arm64:
+    instance-tag: "prod-arm64-m2xlarge-d160"
+
+  linux-d160-m2xlarge-amd64:
+    instance-tag: "prod-amd64-m2xlarge-d160"
+    instance-type: "m7a.2xlarge"
 
   linux-m4xlarge-arm64:
     instance-tag: "prod-arm64-m4xlarge"
 
   linux-m4xlarge-amd64:
     instance-tag: "prod-amd64-m4xlarge"
+    instance-type: "m7a.4xlarge"
+
+  linux-d160-m4xlarge-arm64:
+    instance-tag: "prod-arm64-m4xlarge-d160"
+
+  linux-d160-m4xlarge-amd64:
+    instance-tag: "prod-amd64-m4xlarge-d160"
+    instance-type: "m7a.4xlarge"
+
+  linux-d160-m8xlarge-arm64:
+    instance-tag: "prod-arm64-m8xlarge-d160"
+
+  linux-d160-m8xlarge-amd64:
+    instance-tag: "prod-amd64-m8xlarge-d160"
+    instance-type: "m7a.8xlarge"
 
   linux-m8xlarge-arm64:
     instance-tag: "prod-arm64-m8xlarge"
 
   linux-m8xlarge-amd64:
     instance-tag: "prod-amd64-m8xlarge"
+    instance-type: "m7a.8xlarge"v
 
   linux-c6gd2xlarge-arm64:
     instance-tag: "prod-arm64-c6gd2xlarge"
@@ -221,6 +264,7 @@ dynamicConfigs:
 
   linux-root-amd64:
     instance-tag: "prod-amd64-root"
+    instance-type: "m6idn.2xlarge"
     sudo-commands: "/usr/bin/podman, /usr/bin/rm /usr/share/containers/mounts.conf"
     disk: "200"
     user-data: |-
@@ -287,6 +331,12 @@ dynamicConfigs:
       restorecon -r /home/ec2-user
       
       --//--
+
+  linux-fast-amd64:
+    instance-tag: "prod-amd64-fast"
+
+  linux-extra-fast-amd64:
+    instance-tag: "prod-amd64-extra-fast"
 
 # Static hosts configuration
 staticHosts:

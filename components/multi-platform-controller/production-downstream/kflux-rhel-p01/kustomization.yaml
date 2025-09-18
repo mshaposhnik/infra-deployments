@@ -12,4 +12,4 @@ helmCharts:
   releaseName: host-config
   namespace: multi-platform-controller
   repo: ../../base
-  valuesFile: values-kflux-rhel-p01.yaml
+  valuesFile: host-values.yaml
