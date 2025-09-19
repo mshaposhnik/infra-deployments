@@ -162,7 +162,7 @@ dynamicConfigs:
     instance-tag: "prod-amd64-g4xlarge"
 
   linux-g64xlarge-amd64:
-    ami: "ami-011ef093b05cb7415"
+    ami: "ami-08d4b06f9fe91c604"
     instance-tag: "prod-amd64-g64xlarge"
     user-data: |
       Content-Type: multipart/mixed; boundary="//"

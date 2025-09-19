@@ -6,9 +6,12 @@ namespace: multi-platform-controller
 resources:
 - ../base
 - external-secrets.yaml
+
+helmGlobals:
+  chartHome: ../../base
+
 helmCharts:
 - name: multi-platform-controller-host-config
   releaseName: host-config
   namespace: multi-platform-controller
-  repo: ../../base
   valuesFile: host-values.yaml

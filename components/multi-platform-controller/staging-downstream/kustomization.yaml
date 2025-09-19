@@ -7,11 +7,13 @@ resources:
 components:
   - ../k-components/manager-resources
 
+helmGlobals:
+  chartHome: ../base
+
 helmCharts:
 - name: multi-platform-controller-host-config
   releaseName: host-config
   namespace: multi-platform-controller
-  repo: ../base
   valuesFile: host-values.yaml
 
 namespace: multi-platform-controller

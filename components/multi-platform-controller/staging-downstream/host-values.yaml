@@ -1,34 +1,8 @@
-localPlatforms:
-  - "linux/amd64"
-  - "linux/x86_64"
-  - "local"
-  - "localhost"
-
-dynamicPlatforms:
-  - "linux/arm64"
-  - "linux-mlarge/amd64"
-  - "linux-mlarge/arm64"
-  - "linux-mxlarge/amd64"
-  - "linux-mxlarge/arm64"
-  - "linux-m2xlarge/amd64"
-  - "linux-m2xlarge/arm64"
-  - "linux-m4xlarge/amd64"
-  - "linux-m4xlarge/arm64"
-  - "linux-m8xlarge/amd64"
-  - "linux-c6gd2xlarge/arm64"
-  - "linux-m8xlarge/arm64"
-  - "linux-cxlarge/amd64"
-  - "linux-cxlarge/arm64"
-  - "linux-c2xlarge/amd64"
-  - "linux-c2xlarge/arm64"
-  - "linux-c4xlarge/amd64"
-  - "linux-c4xlarge/arm64"
-  - "linux-c8xlarge/amd64"
-  - "linux-c8xlarge/arm64"
-  - "linux-g6xlarge/amd64"
-  - "linux-g4xlarge/amd64"
-  - "linux-root/arm64"
-  - "linux-root/amd64"
+#localPlatforms:
+#  - "linux/amd64"
+#  - "linux/x86_64"
+#  - "local"
+#  - "localhost"
 
 instanceTag: "rhtap-staging"
 
@@ -51,6 +25,9 @@ archDefaults:
 dynamicConfigs:
   linux-arm64:
     instance-tag: "stage-arm64"
+
+  linux-amd64:
+    instance-tag: "stage-amd64"
 
   linux-mlarge-arm64:
     instance-tag: "stage-arm64-mlarge"

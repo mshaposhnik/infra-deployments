@@ -17,11 +17,11 @@ dynamicConfigs:
   linux-arm64:
     instance-tag: "prod-arm64"
 
-  linux-d160-arm64:
-    instance-tag: "prod-arm64-d160"
-
   linux-amd64:
     instance-tag: "prod-amd64"
+
+  linux-d160-arm64:
+    instance-tag: "prod-arm64-d160"
 
   linux-mlarge-arm64:
     instance-tag: "prod-arm64-mlarge"

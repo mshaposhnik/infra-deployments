@@ -9,44 +9,17 @@ data:
   local-platforms: "\
     {{ join ",\\\n    " (.Values.localPlatforms | default (list "linux/x86_64" "local" "localhost")) }}\
   "
-    
+
+
+  {{- $outs := list }}
+  {{- range $k, $v := .Values.dynamicConfigs }}
+    {{- $parts := splitList "-" $k }}
+    {{- $last := index $parts (sub (len $parts) 1) }}
+    {{- $prefix := join "-" (slice $parts 0 (sub (len $parts) 1)) }}
+    {{- $outs = append $outs (printf "%s/%s" $prefix $last) }}
+  {{- end }}
   dynamic-platforms: "\
-    {{- if .Values.dynamicPlatforms }}
-      {{ join ",\\\n      " .Values.dynamicPlatforms }}\
-    {{- else }}
-    linux/arm64,\
-    linux/amd64,\
-    linux-mlarge/amd64,\
-    linux-mlarge/arm64,\
-    linux-mxlarge/amd64,\
-    linux-mxlarge/arm64,\
-    linux-m2xlarge/amd64,\
-    linux-m2xlarge/arm64,\
-    linux-d160-m2xlarge/amd64,\
-    linux-d160-m2xlarge/arm64,\
-    linux-m4xlarge/amd64,\
-    linux-m4xlarge/arm64,\
-    linux-d160-m4xlarge/amd64,\
-    linux-d160-m4xlarge/arm64,\
-    linux-m8xlarge/amd64,\
-    linux-m8xlarge/arm64,\
-    linux-d160-m8xlarge/amd64,\
-    linux-d160-m8xlarge/arm64,\
-    linux-c6gd2xlarge/arm64,\
-    linux-cxlarge/amd64,\
-    linux-cxlarge/arm64,\
-    linux-c2xlarge/amd64,\
-    linux-c2xlarge/arm64,\
-    linux-c4xlarge/amd64,\
-    linux-c4xlarge/arm64,\
-    linux-c8xlarge/amd64,\
-    linux-c8xlarge/arm64,\
-    linux-g6xlarge/amd64,\
-    linux-root/arm64,\
-    linux-root/amd64,\
-    linux-fast/amd64,\
-    linux-extra-fast/amd64
-    {{- end }}
+    {{ join ",\\\n    " $outs }}\
   "
 
   {{- if .Values.dynamicPoolPlatforms }}
@@ -61,7 +34,7 @@ data:
   additional-instance-tags: "\
   {{- $keys := keys $mergedTags | sortAlpha }}
   {{- range $i, $k := $keys }}
-      {{ $k }}={{ index $mergedTags $k }}{{- if lt $i (sub (len $keys) 1) }},\{{ end }}
+      {{ $k }}={{ index $mergedTags $k }}{{- if lt $i (sub (len $keys) 1) }},{{ end }}\
   {{- end }}
       "
 
@@ -100,7 +73,6 @@ data:
   dynamic.linux-amd64.allocation-timeout: "1200"
   {{ end }}
 
-  # large disk option
   {{- with index .Values.dynamicConfigs "linux-d160-amd64" }}
   dynamic.linux-d160-amd64.type: {{ index . "type" | default "aws" | quote }}
   dynamic.linux-d160-amd64.region: {{ index . "region" | default "us-east-1" | quote }}
@@ -164,7 +136,6 @@ data:
   dynamic.linux-mlarge-amd64.allocation-timeout: "1200"
   {{ end }}
 
-  # large disk option
   {{- with index .Values.dynamicConfigs "linux-d160-mlarge-arm64" }}
   dynamic.linux-d160-mlarge-arm64.type: {{ index . "type" | default "aws" | quote }}
   dynamic.linux-d160-mlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
@@ -227,7 +198,6 @@ data:
   dynamic.linux-mxlarge-amd64.allocation-timeout: "1200"
   {{ end }}
 
-  # large disk option
   {{- with index .Values.dynamicConfigs "linux-d160-mxlarge-arm64" }}
   dynamic.linux-d160-mxlarge-arm64.type: {{ index . "type" | default "aws" | quote }}
   dynamic.linux-d160-mxlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
@@ -290,7 +260,6 @@ data:
   dynamic.linux-m2xlarge-amd64.allocation-timeout: "1200"
   {{ end }}
 
-  # large disk option
   {{- with index .Values.dynamicConfigs "linux-d160-m2xlarge-arm64" }}
   dynamic.linux-d160-m2xlarge-arm64.type: {{ index . "type" | default "aws" | quote }}
   dynamic.linux-d160-m2xlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
@@ -353,7 +322,6 @@ data:
   dynamic.linux-m4xlarge-amd64.allocation-timeout: "1200"
   {{ end }}
 
-  # large disk option
   {{- with index .Values.dynamicConfigs "linux-d160-m4xlarge-arm64" }}
   dynamic.linux-d160-m4xlarge-arm64.type: {{ index . "type" | default "aws" | quote }}
   dynamic.linux-d160-m4xlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
@@ -449,7 +417,6 @@ data:
   {{ end }}
 
 
-  # large disk option
   {{- with index .Values.dynamicConfigs "linux-d160-m8xlarge-arm64" }}
   dynamic.linux-d160-m8xlarge-arm64.type: {{ index . "type" | default "aws" | quote }}
   dynamic.linux-d160-m8xlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
@@ -504,7 +471,6 @@ data:
   {{- end }}
   {{ end }}
 
-  # cpu:memory (1:2)
   {{- with index .Values.dynamicConfigs "linux-cxlarge-arm64" }}
   dynamic.linux-cxlarge-arm64.type: {{ index . "type" | default "aws" | quote }}
   dynamic.linux-cxlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
@@ -535,7 +501,6 @@ data:
   dynamic.linux-cxlarge-amd64.allocation-timeout: "1200"
   {{ end }}
 
-  # large disk option
   {{- with index .Values.dynamicConfigs "linux-d160-cxlarge-arm64" }}
   dynamic.linux-d160-cxlarge-arm64.type: {{ index . "type" | default "aws" | quote }}
   dynamic.linux-d160-cxlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
@@ -598,7 +563,6 @@ data:
   dynamic.linux-c2xlarge-amd64.allocation-timeout: "1200"
   {{ end }}
 
-  # large disk option
   {{- with index .Values.dynamicConfigs "linux-d160-c2xlarge-arm64" }}
   dynamic.linux-d160-c2xlarge-arm64.type: {{ index . "type" | default "aws" | quote }}
   dynamic.linux-d160-c2xlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
@@ -661,7 +625,6 @@ data:
   dynamic.linux-c4xlarge-amd64.allocation-timeout: "1200"
   {{ end }}
 
-  # large disk option
   {{- with index .Values.dynamicConfigs "linux-d160-c4xlarge-arm64" }}
   dynamic.linux-d160-c4xlarge-arm64.type: {{ index . "type" | default "aws" | quote }}
   dynamic.linux-d160-c4xlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
@@ -694,7 +657,6 @@ data:
   dynamic.linux-d160-c4xlarge-amd64.allocation-timeout: "1200"
   {{ end }}
 
-  # very large disk option
   {{- with index .Values.dynamicConfigs "linux-d320-c4xlarge-arm64" }}
   dynamic.linux-d320-c4xlarge-arm64.type: {{ index . "type" | default "aws" | quote }}
   dynamic.linux-d320-c4xlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
@@ -757,7 +719,6 @@ data:
   dynamic.linux-c8xlarge-amd64.allocation-timeout: "1200"
   {{ end }}
 
-  # large disk option
   {{- with index .Values.dynamicConfigs "linux-d160-c8xlarge-arm64" }}
   dynamic.linux-d160-c8xlarge-arm64.type: {{ index . "type" | default "aws" | quote }}
   dynamic.linux-d160-c8xlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
@@ -814,7 +775,6 @@ data:
   {{ end }}
 
 
-    # GPU Instances
   {{- with index .Values.dynamicConfigs "linux-g64xlarge-amd64" }}
   dynamic.linux-g64xlarge-amd64.type: {{ index . "type" | default "aws" | quote }}
   dynamic.linux-g64xlarge-amd64.region: {{ index . "region" | default "us-east-1" | quote }}

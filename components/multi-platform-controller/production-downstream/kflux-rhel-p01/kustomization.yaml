@@ -7,6 +7,9 @@ resources:
 - ../base
 - external-secrets.yaml
 
+helmGlobals:
+  chartHome: ../../base
+
 helmCharts:
 - name: multi-platform-controller-host-config
   releaseName: host-config

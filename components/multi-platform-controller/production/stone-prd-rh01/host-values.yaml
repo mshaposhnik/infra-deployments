@@ -14,7 +14,6 @@ archDefaults:
 
 
 dynamicConfigs:
-
   linux-amd64:
     instance-tag: "prod-amd64"
 
