@@ -40,6 +40,7 @@ data:
 
   {{- $arm := (index .Values "archDefaults" "arm64") | default (dict) }}
   {{- $amd := (index .Values "archDefaults" "amd64") | default (dict) }}
+  {{- $environment := .Values.environment | default "prod" }}
 
   # cpu:memory (1:4)
   {{- with index .Values.dynamicConfigs "linux-arm64" }}
@@ -47,7 +48,7 @@ data:
   dynamic.linux-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-arm64.ami: {{ default (index $arm "ami") .ami | quote }}
   dynamic.linux-arm64.instance-type: {{ (index . "instance-type") | default "m6g.large" | quote }}
-  dynamic.linux-arm64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-arm64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-arm64" $environment) | quote }}
   dynamic.linux-arm64.key-name: {{ default (index $arm "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-arm64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-arm64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -63,7 +64,7 @@ data:
   dynamic.linux-amd64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-amd64.ami: {{ default (index $amd "ami") .ami | quote }}
   dynamic.linux-amd64.instance-type: {{ (index . "instance-type") | default "m6a.large" | quote }}
-  dynamic.linux-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64" $environment) | quote }}
   dynamic.linux-amd64.key-name: {{ default (index $amd "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-amd64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-amd64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -78,7 +79,7 @@ data:
   dynamic.linux-d160-amd64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-d160-amd64.ami: {{ default (index $amd "ami") .ami | quote }}
   dynamic.linux-d160-amd64.instance-type: {{ (index . "instance-type") | default "m6a.large" | quote }}
-  dynamic.linux-d160-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-d160-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64-d160" $environment) | quote }}
   dynamic.linux-d160-amd64.key-name: {{ default (index $amd "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-d160-amd64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-d160-amd64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -94,7 +95,7 @@ data:
   dynamic.linux-d160-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-d160-arm64.ami: {{ default (index $arm "ami") .ami | quote }}
   dynamic.linux-d160-arm64.instance-type: {{ (index . "instance-type") | default "m6g.large" | quote }}
-  dynamic.linux-d160-arm64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-d160-arm64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-arm64-d160" $environment) | quote }}
   dynamic.linux-d160-arm64.key-name: {{ default (index $arm "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-d160-arm64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-d160-arm64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -111,7 +112,7 @@ data:
   dynamic.linux-mlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-mlarge-arm64.ami: {{ default (index $arm "ami") .ami | quote }}
   dynamic.linux-mlarge-arm64.instance-type: {{ (index . "instance-type") | default "m6g.large" | quote }}
-  dynamic.linux-mlarge-arm64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-mlarge-arm64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-arm64-mlarge" $environment) | quote }}
   dynamic.linux-mlarge-arm64.key-name: {{ default (index $arm "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-mlarge-arm64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-mlarge-arm64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -126,7 +127,7 @@ data:
   dynamic.linux-mlarge-amd64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-mlarge-amd64.ami: {{ default (index $amd "ami") .ami | quote }}
   dynamic.linux-mlarge-amd64.instance-type: {{ (index . "instance-type") | default "m6a.large" | quote }}
-  dynamic.linux-mlarge-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-mlarge-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64-mlarge" $environment) | quote }}
   dynamic.linux-mlarge-amd64.key-name: {{ default (index $amd "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-mlarge-amd64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-mlarge-amd64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -141,7 +142,7 @@ data:
   dynamic.linux-d160-mlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-d160-mlarge-arm64.ami: {{ default (index $arm "ami") .ami | quote }}
   dynamic.linux-d160-mlarge-arm64.instance-type: {{ (index . "instance-type") | default "m6g.large" | quote }}
-  dynamic.linux-d160-mlarge-arm64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-d160-mlarge-arm64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-arm64-mlarge-d160" $environment) | quote }}
   dynamic.linux-d160-mlarge-arm64.key-name: {{ default (index $arm "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-d160-mlarge-arm64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-d160-mlarge-arm64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -157,7 +158,7 @@ data:
   dynamic.linux-d160-mlarge-amd64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-d160-mlarge-amd64.ami: {{ default (index $amd "ami") .ami | quote }}
   dynamic.linux-d160-mlarge-amd64.instance-type: {{ (index . "instance-type") | default "m6a.large" | quote }}
-  dynamic.linux-d160-mlarge-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-d160-mlarge-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64-mlarge-d160" $environment) | quote }}
   dynamic.linux-d160-mlarge-amd64.key-name: {{ default (index $amd "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-d160-mlarge-amd64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-d160-mlarge-amd64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -173,7 +174,7 @@ data:
   dynamic.linux-mxlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-mxlarge-arm64.ami: {{ default (index $arm "ami") .ami | quote }}
   dynamic.linux-mxlarge-arm64.instance-type: {{ (index . "instance-type") | default "m6g.xlarge" | quote }}
-  dynamic.linux-mxlarge-arm64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-mxlarge-arm64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-arm64-mxlarge" $environment) | quote }}
   dynamic.linux-mxlarge-arm64.key-name: {{ default (index $arm "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-mxlarge-arm64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-mxlarge-arm64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -188,7 +189,7 @@ data:
   dynamic.linux-mxlarge-amd64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-mxlarge-amd64.ami: {{ default (index $amd "ami") .ami | quote }}
   dynamic.linux-mxlarge-amd64.instance-type: {{ (index . "instance-type") | default "m6a.xlarge" | quote }}
-  dynamic.linux-mxlarge-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-mxlarge-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64-mxlarge" $environment) | quote }}
   dynamic.linux-mxlarge-amd64.key-name: {{ default (index $amd "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-mxlarge-amd64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-mxlarge-amd64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -203,7 +204,7 @@ data:
   dynamic.linux-d160-mxlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-d160-mxlarge-arm64.ami: {{ default (index $arm "ami") .ami | quote }}
   dynamic.linux-d160-mxlarge-arm64.instance-type: {{ (index . "instance-type") | default "m6g.xlarge" | quote }}
-  dynamic.linux-d160-mxlarge-arm64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-d160-mxlarge-arm64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-arm64-mxlarge-d160" $environment) | quote }}
   dynamic.linux-d160-mxlarge-arm64.key-name: {{ default (index $arm "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-d160-mxlarge-arm64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-d160-mxlarge-arm64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -219,7 +220,7 @@ data:
   dynamic.linux-d160-mxlarge-amd64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-d160-mxlarge-amd64.ami: {{ default (index $amd "ami") .ami | quote }}
   dynamic.linux-d160-mxlarge-amd64.instance-type: {{ (index . "instance-type") | default "m6a.xlarge" | quote }}
-  dynamic.linux-d160-mxlarge-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-d160-mxlarge-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64-mxlarge-d160" $environment) | quote }}
   dynamic.linux-d160-mxlarge-amd64.key-name: {{ default (index $amd "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-d160-mxlarge-amd64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-d160-mxlarge-amd64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -235,7 +236,7 @@ data:
   dynamic.linux-m2xlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-m2xlarge-arm64.ami: {{ default (index $arm "ami") .ami | quote }}
   dynamic.linux-m2xlarge-arm64.instance-type: {{ (index . "instance-type") | default "m6g.2xlarge" | quote }}
-  dynamic.linux-m2xlarge-arm64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-m2xlarge-arm64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-arm64-m2xlarge" $environment) | quote }}
   dynamic.linux-m2xlarge-arm64.key-name: {{ default (index $arm "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-m2xlarge-arm64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-m2xlarge-arm64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -250,7 +251,7 @@ data:
   dynamic.linux-m2xlarge-amd64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-m2xlarge-amd64.ami: {{ default (index $amd "ami") .ami | quote }}
   dynamic.linux-m2xlarge-amd64.instance-type: {{ (index . "instance-type") | default "m6a.2xlarge" | quote }}
-  dynamic.linux-m2xlarge-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-m2xlarge-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64-m2xlarge" $environment) | quote }}
   dynamic.linux-m2xlarge-amd64.key-name: {{ default (index $amd "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-m2xlarge-amd64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-m2xlarge-amd64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -265,7 +266,7 @@ data:
   dynamic.linux-d160-m2xlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-d160-m2xlarge-arm64.ami: {{ default (index $arm "ami") .ami | quote }}
   dynamic.linux-d160-m2xlarge-arm64.instance-type: {{ (index . "instance-type") | default "m6g.2xlarge" | quote }}
-  dynamic.linux-d160-m2xlarge-arm64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-d160-m2xlarge-arm64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-arm64-m2xlarge-d160" $environment) | quote }}
   dynamic.linux-d160-m2xlarge-arm64.key-name: {{ default (index $arm "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-d160-m2xlarge-arm64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-d160-m2xlarge-arm64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -281,7 +282,7 @@ data:
   dynamic.linux-d160-m2xlarge-amd64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-d160-m2xlarge-amd64.ami: {{ default (index $amd "ami") .ami | quote }}
   dynamic.linux-d160-m2xlarge-amd64.instance-type: {{ (index . "instance-type") | default "m6a.2xlarge" | quote }}
-  dynamic.linux-d160-m2xlarge-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-d160-m2xlarge-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64-m2xlarge-d160" $environment) | quote }}
   dynamic.linux-d160-m2xlarge-amd64.key-name: {{ default (index $amd "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-d160-m2xlarge-amd64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-d160-m2xlarge-amd64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -297,7 +298,7 @@ data:
   dynamic.linux-m4xlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-m4xlarge-arm64.ami: {{ default (index $arm "ami") .ami | quote }}
   dynamic.linux-m4xlarge-arm64.instance-type: {{ (index . "instance-type") | default "m6g.4xlarge" | quote }}
-  dynamic.linux-m4xlarge-arm64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-m4xlarge-arm64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-arm64-m4xlarge" $environment) | quote }}
   dynamic.linux-m4xlarge-arm64.key-name: {{ default (index $arm "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-m4xlarge-arm64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-m4xlarge-arm64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -312,7 +313,7 @@ data:
   dynamic.linux-m4xlarge-amd64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-m4xlarge-amd64.ami: {{ default (index $amd "ami") .ami | quote }}
   dynamic.linux-m4xlarge-amd64.instance-type: {{ (index . "instance-type") | default "m6a.4xlarge" | quote }}
-  dynamic.linux-m4xlarge-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-m4xlarge-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64-m4xlarge" $environment) | quote }}
   dynamic.linux-m4xlarge-amd64.key-name: {{ default (index $amd "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-m4xlarge-amd64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-m4xlarge-amd64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -327,7 +328,7 @@ data:
   dynamic.linux-d160-m4xlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-d160-m4xlarge-arm64.ami: {{ default (index $arm "ami") .ami | quote }}
   dynamic.linux-d160-m4xlarge-arm64.instance-type: {{ (index . "instance-type") | default "m6g.4xlarge" | quote }}
-  dynamic.linux-d160-m4xlarge-arm64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-d160-m4xlarge-arm64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-arm64-m4xlarge-d160" $environment) | quote }}
   dynamic.linux-d160-m4xlarge-arm64.key-name: {{ default (index $arm "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-d160-m4xlarge-arm64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-d160-m4xlarge-arm64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -343,7 +344,7 @@ data:
   dynamic.linux-d160-m4xlarge-amd64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-d160-m4xlarge-amd64.ami: {{ default (index $amd "ami") .ami | quote }}
   dynamic.linux-d160-m4xlarge-amd64.instance-type: {{ (index . "instance-type") | default "m6a.4xlarge" | quote }}
-  dynamic.linux-d160-m4xlarge-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-d160-m4xlarge-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64-m4xlarge-d160" $environment) | quote }}
   dynamic.linux-d160-m4xlarge-amd64.key-name: {{ default (index $amd "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-d160-m4xlarge-amd64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-d160-m4xlarge-amd64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -359,7 +360,7 @@ data:
   dynamic.linux-m8xlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-m8xlarge-arm64.ami: {{ default (index $arm "ami") .ami | quote }}
   dynamic.linux-m8xlarge-arm64.instance-type: {{ (index . "instance-type") | default "m6g.8xlarge" | quote }}
-  dynamic.linux-m8xlarge-arm64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-m8xlarge-arm64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-arm64-m8xlarge" $environment) | quote }}
   dynamic.linux-m8xlarge-arm64.key-name: {{ default (index $arm "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-m8xlarge-arm64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-m8xlarge-arm64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -374,7 +375,7 @@ data:
   dynamic.linux-m8xlarge-amd64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-m8xlarge-amd64.ami: {{ default (index $amd "ami") .ami | quote }}
   dynamic.linux-m8xlarge-amd64.instance-type: {{ (index . "instance-type") | default "m6a.8xlarge" | quote }}
-  dynamic.linux-m8xlarge-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-m8xlarge-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64-m8xlarge" $environment) | quote }}
   dynamic.linux-m8xlarge-amd64.key-name: {{ default (index $amd "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-m8xlarge-amd64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-m8xlarge-amd64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -389,7 +390,7 @@ data:
   dynamic.linux-d160-m7-8xlarge-amd64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-d160-m7-8xlarge-amd64.ami: {{ default (index $amd "ami") .ami | quote }}
   dynamic.linux-d160-m7-8xlarge-amd64.instance-type: {{ (index . "instance-type") | default "m7a.8xlarge" | quote }}
-  dynamic.linux-d160-m7-8xlarge-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-d160-m7-8xlarge-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64-m7-8xlarge-d160" $environment) | quote }}
   dynamic.linux-d160-m7-8xlarge-amd64.key-name: {{ default (index $amd "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-d160-m7-8xlarge-amd64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-d160-m7-8xlarge-amd64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -405,7 +406,7 @@ data:
   dynamic.linux-d160-m8-8xlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-d160-m8-8xlarge-arm64.ami: {{ default (index $arm "ami") .ami | quote }}
   dynamic.linux-d160-m8-8xlarge-arm64.instance-type: {{ (index . "instance-type") | default "m8g.8xlarge" | quote }}
-  dynamic.linux-d160-m8-8xlarge-arm64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-d160-m8-8xlarge-arm64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-arm64-m8-8xlarge-d160" $environment) | quote }}
   dynamic.linux-d160-m8-8xlarge-arm64.key-name: {{ default (index $arm "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-d160-m8-8xlarge-arm64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-d160-m8-8xlarge-arm64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -422,7 +423,7 @@ data:
   dynamic.linux-d160-m8xlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-d160-m8xlarge-arm64.ami: {{ default (index $arm "ami") .ami | quote }}
   dynamic.linux-d160-m8xlarge-arm64.instance-type: {{ (index . "instance-type") | default "m6g.8xlarge" | quote }}
-  dynamic.linux-d160-m8xlarge-arm64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-d160-m8xlarge-arm64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-arm64-m8xlarge-d160" $environment) | quote }}
   dynamic.linux-d160-m8xlarge-arm64.key-name: {{ default (index $arm "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-d160-m8xlarge-arm64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-d160-m8xlarge-arm64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -438,7 +439,7 @@ data:
   dynamic.linux-d160-m8xlarge-amd64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-d160-m8xlarge-amd64.ami: {{ default (index $amd "ami") .ami | quote }}
   dynamic.linux-d160-m8xlarge-amd64.instance-type: {{ (index . "instance-type") | default "m6a.8xlarge" | quote }}
-  dynamic.linux-d160-m8xlarge-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-d160-m8xlarge-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64-m8xlarge-d160" $environment) | quote }}
   dynamic.linux-d160-m8xlarge-amd64.key-name: {{ default (index $amd "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-d160-m8xlarge-amd64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-d160-m8xlarge-amd64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -454,7 +455,7 @@ data:
   dynamic.linux-c6gd2xlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-c6gd2xlarge-arm64.ami: {{ default (index $arm "ami") .ami | quote }}
   dynamic.linux-c6gd2xlarge-arm64.instance-type: {{ (index . "instance-type") | default "c6gd.2xlarge" | quote }}
-  dynamic.linux-c6gd2xlarge-arm64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-c6gd2xlarge-arm64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-arm64-c6gd2xlarge" $environment) | quote }}
   dynamic.linux-c6gd2xlarge-arm64.key-name: {{ default (index $arm "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-c6gd2xlarge-arm64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-c6gd2xlarge-arm64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -476,7 +477,7 @@ data:
   dynamic.linux-cxlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-cxlarge-arm64.ami: {{ default (index $arm "ami") .ami | quote }}
   dynamic.linux-cxlarge-arm64.instance-type: {{ (index . "instance-type") | default "c6g.xlarge" | quote }}
-  dynamic.linux-cxlarge-arm64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-cxlarge-arm64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-arm64-cxlarge" $environment) | quote }}
   dynamic.linux-cxlarge-arm64.key-name: {{ default (index $arm "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-cxlarge-arm64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-cxlarge-arm64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -491,7 +492,7 @@ data:
   dynamic.linux-cxlarge-amd64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-cxlarge-amd64.ami: {{ default (index $amd "ami") .ami | quote }}
   dynamic.linux-cxlarge-amd64.instance-type: {{ (index . "instance-type") | default "c6a.xlarge" | quote }}
-  dynamic.linux-cxlarge-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-cxlarge-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64-cxlarge" $environment) | quote }}
   dynamic.linux-cxlarge-amd64.key-name: {{ default (index $amd "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-cxlarge-amd64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-cxlarge-amd64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -506,7 +507,7 @@ data:
   dynamic.linux-d160-cxlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-d160-cxlarge-arm64.ami: {{ default (index $arm "ami") .ami | quote }}
   dynamic.linux-d160-cxlarge-arm64.instance-type: {{ (index . "instance-type") | default "c6g.xlarge" | quote }}
-  dynamic.linux-d160-cxlarge-arm64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-d160-cxlarge-arm64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-arm64-cxlarge-d160" $environment) | quote }}
   dynamic.linux-d160-cxlarge-arm64.key-name: {{ default (index $arm "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-d160-cxlarge-arm64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-d160-cxlarge-arm64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -522,7 +523,7 @@ data:
   dynamic.linux-d160-cxlarge-amd64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-d160-cxlarge-amd64.ami: {{ default (index $amd "ami") .ami | quote }}
   dynamic.linux-d160-cxlarge-amd64.instance-type: {{ (index . "instance-type") | default "c6a.xlarge" | quote }}
-  dynamic.linux-d160-cxlarge-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-d160-cxlarge-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64-cxlarge-d160" $environment) | quote }}
   dynamic.linux-d160-cxlarge-amd64.key-name: {{ default (index $amd "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-d160-cxlarge-amd64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-d160-cxlarge-amd64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -538,7 +539,7 @@ data:
   dynamic.linux-c2xlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-c2xlarge-arm64.ami: {{ default (index $arm "ami") .ami | quote }}
   dynamic.linux-c2xlarge-arm64.instance-type: {{ (index . "instance-type") | default "c6g.2xlarge" | quote }}
-  dynamic.linux-c2xlarge-arm64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-c2xlarge-arm64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-arm64-c2xlarge" $environment) | quote }}
   dynamic.linux-c2xlarge-arm64.key-name: {{ default (index $arm "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-c2xlarge-arm64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-c2xlarge-arm64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -553,7 +554,7 @@ data:
   dynamic.linux-c2xlarge-amd64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-c2xlarge-amd64.ami: {{ default (index $amd "ami") .ami | quote }}
   dynamic.linux-c2xlarge-amd64.instance-type: {{ (index . "instance-type") | default "c6a.2xlarge" | quote }}
-  dynamic.linux-c2xlarge-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-c2xlarge-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64-c2xlarge" $environment) | quote }}
   dynamic.linux-c2xlarge-amd64.key-name: {{ default (index $amd "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-c2xlarge-amd64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-c2xlarge-amd64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -568,7 +569,7 @@ data:
   dynamic.linux-d160-c2xlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-d160-c2xlarge-arm64.ami: {{ default (index $arm "ami") .ami | quote }}
   dynamic.linux-d160-c2xlarge-arm64.instance-type: {{ (index . "instance-type") | default "c6g.2xlarge" | quote }}
-  dynamic.linux-d160-c2xlarge-arm64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-d160-c2xlarge-arm64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-arm64-c2xlarge-d160" $environment) | quote }}
   dynamic.linux-d160-c2xlarge-arm64.key-name: {{ default (index $arm "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-d160-c2xlarge-arm64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-d160-c2xlarge-arm64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -584,7 +585,7 @@ data:
   dynamic.linux-d160-c2xlarge-amd64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-d160-c2xlarge-amd64.ami: {{ default (index $amd "ami") .ami | quote }}
   dynamic.linux-d160-c2xlarge-amd64.instance-type: {{ (index . "instance-type") | default "c6a.2xlarge" | quote }}
-  dynamic.linux-d160-c2xlarge-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-d160-c2xlarge-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64-c2xlarge-d160" $environment) | quote }}
   dynamic.linux-d160-c2xlarge-amd64.key-name: {{ default (index $amd "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-d160-c2xlarge-amd64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-d160-c2xlarge-amd64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -600,7 +601,7 @@ data:
   dynamic.linux-c4xlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-c4xlarge-arm64.ami: {{ default (index $arm "ami") .ami | quote }}
   dynamic.linux-c4xlarge-arm64.instance-type: {{ (index . "instance-type") | default "c6g.4xlarge" | quote }}
-  dynamic.linux-c4xlarge-arm64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-c4xlarge-arm64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-arm64-c4xlarge" $environment) | quote }}
   dynamic.linux-c4xlarge-arm64.key-name: {{ default (index $arm "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-c4xlarge-arm64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-c4xlarge-arm64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -615,7 +616,7 @@ data:
   dynamic.linux-c4xlarge-amd64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-c4xlarge-amd64.ami: {{ default (index $amd "ami") .ami | quote }}
   dynamic.linux-c4xlarge-amd64.instance-type:  {{ (index . "instance-type") | default "c6a.4xlarge" | quote }}
-  dynamic.linux-c4xlarge-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-c4xlarge-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64-c4xlarge" $environment) | quote }}
   dynamic.linux-c4xlarge-amd64.key-name: {{ default (index $amd "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-c4xlarge-amd64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-c4xlarge-amd64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -630,7 +631,7 @@ data:
   dynamic.linux-d160-c4xlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-d160-c4xlarge-arm64.ami: {{ default (index $arm "ami") .ami | quote }}
   dynamic.linux-d160-c4xlarge-arm64.instance-type: {{ (index . "instance-type") | default "c6g.4xlarge" | quote }}
-  dynamic.linux-d160-c4xlarge-arm64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-d160-c4xlarge-arm64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-arm64-c4xlarge-d160" $environment) | quote }}
   dynamic.linux-d160-c4xlarge-arm64.key-name: {{ default (index $arm "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-d160-c4xlarge-arm64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-d160-c4xlarge-arm64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -646,7 +647,7 @@ data:
   dynamic.linux-d160-c4xlarge-amd64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-d160-c4xlarge-amd64.ami: {{ default (index $amd "ami") .ami | quote }}
   dynamic.linux-d160-c4xlarge-amd64.instance-type: {{ (index . "instance-type") | default "c6a.4xlarge" | quote }}
-  dynamic.linux-d160-c4xlarge-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-d160-c4xlarge-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64-c4xlarge-d160" $environment) | quote }}
   dynamic.linux-d160-c4xlarge-amd64.key-name: {{ default (index $amd "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-d160-c4xlarge-amd64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-d160-c4xlarge-amd64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -662,7 +663,7 @@ data:
   dynamic.linux-d320-c4xlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-d320-c4xlarge-arm64.ami: {{ default (index $arm "ami") .ami | quote }}
   dynamic.linux-d320-c4xlarge-arm64.instance-type: {{ (index . "instance-type") | default "c6g.4xlarge" | quote }}
-  dynamic.linux-d320-c4xlarge-arm64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-d320-c4xlarge-arm64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-arm64-c4xlarge-d320" $environment) | quote }}
   dynamic.linux-d320-c4xlarge-arm64.key-name: {{ default (index $arm "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-d320-c4xlarge-arm64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-d320-c4xlarge-arm64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -678,7 +679,7 @@ data:
   dynamic.linux-d320-c4xlarge-amd64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-d320-c4xlarge-amd64.ami: {{ default (index $amd "ami") .ami | quote }}
   dynamic.linux-d320-c4xlarge-amd64.instance-type: {{ (index . "instance-type") | default "c6a.4xlarge" | quote }}
-  dynamic.linux-d320-c4xlarge-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-d320-c4xlarge-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64-c4xlarge-d320" $environment) | quote }}
   dynamic.linux-d320-c4xlarge-amd64.key-name: {{ default (index $amd "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-d320-c4xlarge-amd64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-d320-c4xlarge-amd64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -694,7 +695,7 @@ data:
   dynamic.linux-c8xlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-c8xlarge-arm64.ami: {{ default (index $arm "ami") .ami | quote }}
   dynamic.linux-c8xlarge-arm64.instance-type: {{ (index . "instance-type") | default "c6g.8xlarge" | quote }}
-  dynamic.linux-c8xlarge-arm64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-c8xlarge-arm64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-arm64-c8xlarge" $environment) | quote }}
   dynamic.linux-c8xlarge-arm64.key-name: {{ default (index $arm "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-c8xlarge-arm64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-c8xlarge-arm64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -709,7 +710,7 @@ data:
   dynamic.linux-c8xlarge-amd64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-c8xlarge-amd64.ami: {{ default (index $amd "ami") .ami | quote }}
   dynamic.linux-c8xlarge-amd64.instance-type:  {{ (index . "instance-type") | default "c6a.8xlarge" | quote }}
-  dynamic.linux-c8xlarge-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-c8xlarge-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64-c8xlarge" $environment) | quote }}
   dynamic.linux-c8xlarge-amd64.key-name: {{ default (index $amd "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-c8xlarge-amd64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-c8xlarge-amd64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -724,7 +725,7 @@ data:
   dynamic.linux-d160-c8xlarge-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-d160-c8xlarge-arm64.ami: {{ default (index $arm "ami") .ami | quote }}
   dynamic.linux-d160-c8xlarge-arm64.instance-type: {{ (index . "instance-type") | default "c6g.8xlarge" | quote }}
-  dynamic.linux-d160-c8xlarge-arm64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-d160-c8xlarge-arm64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-arm64-c8xlarge-d160" $environment) | quote }}
   dynamic.linux-d160-c8xlarge-arm64.key-name: {{ default (index $arm "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-d160-c8xlarge-arm64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-d160-c8xlarge-arm64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -740,7 +741,7 @@ data:
   dynamic.linux-d160-c8xlarge-amd64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-d160-c8xlarge-amd64.ami: {{ default (index $amd "ami") .ami | quote }}
   dynamic.linux-d160-c8xlarge-amd64.instance-type: {{ (index . "instance-type") | default "c6a.8xlarge" | quote }}
-  dynamic.linux-d160-c8xlarge-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-d160-c8xlarge-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64-c8xlarge-d160" $environment) | quote }}
   dynamic.linux-d160-c8xlarge-amd64.key-name: {{ default (index $amd "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-d160-c8xlarge-amd64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-d160-c8xlarge-amd64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -763,7 +764,7 @@ data:
   dynamic.linux-g6xlarge-amd64.security-group-id: {{ default (index $amd "security-group-id") ((index . "security-group-id")) | quote }}
   dynamic.linux-g6xlarge-amd64.max-instances: {{ (index . "max-instances") | default "250" | quote }}
   dynamic.linux-g6xlarge-amd64.subnet-id: {{ default (index $amd "subnet-id") ((index . "subnet-id")) | quote }}
-  dynamic.linux-g6xlarge-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-g6xlarge-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64-g6xlarge" $environment) | quote }}
   dynamic.linux-g6xlarge-amd64.allocation-timeout: "1200"
   {{- if (index . "user-data") }}
   dynamic.linux-g6xlarge-amd64.user-data: |
@@ -786,7 +787,7 @@ data:
   dynamic.linux-g64xlarge-amd64.security-group-id: {{ default (index $amd "security-group-id") ((index . "security-group-id")) | quote }}
   dynamic.linux-g64xlarge-amd64.max-instances: {{ (index . "max-instances") | default "250" | quote }}
   dynamic.linux-g64xlarge-amd64.subnet-id: {{ default (index $amd "subnet-id") ((index . "subnet-id")) | quote }}
-  dynamic.linux-g64xlarge-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-g64xlarge-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64-g64xlarge" $environment) | quote }}
   dynamic.linux-g64xlarge-amd64.allocation-timeout: "1200"
   {{- if (index . "user-data") }}
   dynamic.linux-g64xlarge-amd64.user-data: |
@@ -805,7 +806,7 @@ data:
   dynamic.linux-root-arm64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-root-arm64.ami: {{ default (index $arm "ami") .ami | quote }}
   dynamic.linux-root-arm64.instance-type: {{ (index . "instance-type") | default "m6g.large" | quote }}
-  dynamic.linux-root-arm64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-root-arm64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-arm64-root" $environment) | quote }}
   dynamic.linux-root-arm64.key-name: {{ default (index $arm "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-root-arm64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-root-arm64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -829,7 +830,7 @@ data:
   dynamic.linux-root-amd64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-root-amd64.ami: {{ default (index $amd "ami") .ami | quote }}
   dynamic.linux-root-amd64.instance-type: {{ (index . "instance-type") | default "m5.2xlarge" | quote }}
-  dynamic.linux-root-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-root-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64-root" $environment) | quote }}
   dynamic.linux-root-amd64.key-name: {{ default (index $amd "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-root-amd64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-root-amd64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -854,7 +855,7 @@ data:
   dynamic.linux-fast-amd64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-fast-amd64.ami: {{ default (index $amd "ami") .ami | quote }}
   dynamic.linux-fast-amd64.instance-type: {{ (index . "instance-type") | default "c7a.8xlarge" | quote }}
-  dynamic.linux-fast-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-fast-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64-fast" $environment) | quote }}
   dynamic.linux-fast-amd64.key-name: {{ default (index $amd "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-fast-amd64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-fast-amd64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}
@@ -870,7 +871,7 @@ data:
   dynamic.linux-extra-fast-amd64.region: {{ index . "region" | default "us-east-1" | quote }}
   dynamic.linux-extra-fast-amd64.ami: {{ default (index $amd "ami") .ami | quote }}
   dynamic.linux-extra-fast-amd64.instance-type: {{ (index . "instance-type") | default "c7a.12xlarge" | quote }}
-  dynamic.linux-extra-fast-amd64.instance-tag: {{ (index . "instance-tag") | quote }}
+  dynamic.linux-extra-fast-amd64.instance-tag: {{ (index . "instance-tag") | default (printf "%s-amd64-extra-fast" $environment) | quote }}
   dynamic.linux-extra-fast-amd64.key-name: {{ default (index $amd "key-name") ((index . "key-name")) | quote }}
   dynamic.linux-extra-fast-amd64.aws-secret: {{ (index . "aws-secret") | default "aws-account" | quote }}
   dynamic.linux-extra-fast-amd64.ssh-secret: {{ (index . "ssh-secret") | default "aws-ssh-key" | quote }}

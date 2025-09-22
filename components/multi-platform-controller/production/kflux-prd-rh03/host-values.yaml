@@ -1,3 +1,4 @@
+environment: "prod"
 
 archDefaults:
   arm64:
@@ -13,56 +14,39 @@ archDefaults:
 
 
 dynamicConfigs:
-  linux-arm64:
-    instance-tag: "prod-arm64"
+  linux-arm64: {}
 
-  linux-amd64:
-    instance-tag: "prod-amd64"
+  linux-amd64: {}
 
-  linux-mlarge-arm64:
-    instance-tag: "prod-arm64-mlarge"
+  linux-mlarge-arm64: {}
 
-  linux-mlarge-amd64:
-    instance-tag: "prod-amd64-mlarge"
+  linux-mlarge-amd64: {}
 
-  linux-mxlarge-arm64:
-    instance-tag: "prod-arm64-mxlarge"
+  linux-mxlarge-arm64: {}
 
-  linux-mxlarge-amd64:
-    instance-tag: "prod-amd64-mxlarge"
+  linux-mxlarge-amd64: {}
 
-  linux-m2xlarge-arm64:
-    instance-tag: "prod-arm64-m2xlarge"
+  linux-m2xlarge-arm64: {}
 
-  linux-m2xlarge-amd64:
-    instance-tag: "prod-amd64-m2xlarge"
+  linux-m2xlarge-amd64: {}
 
-  linux-d160-m2xlarge-arm64:
-    instance-tag: "prod-arm64-m2xlarge-d160"
+  linux-d160-m2xlarge-arm64: {}
 
-  linux-d160-m2xlarge-amd64:
-    instance-tag: "prod-amd64-m2xlarge-d160"
+  linux-d160-m2xlarge-amd64: {}
 
-  linux-m4xlarge-arm64:
-    instance-tag: "prod-arm64-m4xlarge"
+  linux-m4xlarge-arm64: {}
 
-  linux-m4xlarge-amd64:
-    instance-tag: "prod-amd64-m4xlarge"
+  linux-m4xlarge-amd64: {}
 
-  linux-m8xlarge-arm64:
-    instance-tag: "prod-arm64-m8xlarge"
+  linux-m8xlarge-arm64: {}
 
-  linux-m8xlarge-amd64:
-    instance-tag: "prod-amd64-m8xlarge"
+  linux-m8xlarge-amd64: {}
 
-  linux-d160-m7-8xlarge-amd64:
-    instance-tag: "prod-amd64-m7-8xlarge-d160"
+  linux-d160-m7-8xlarge-amd64: {}
 
-  linux-d160-m8-8xlarge-arm64:
-    instance-tag: "prod-arm64-m8-8xlarge-d160"
+  linux-d160-m8-8xlarge-arm64: {}
 
   linux-c6gd2xlarge-arm64:
-    instance-tag: "prod-arm64-c6gd2xlarge"
     user-data: |
       Content-Type: multipart/mixed; boundary="//"
       MIME-Version: 1.0
@@ -128,42 +112,30 @@ dynamicConfigs:
 
       --//--
 
-  linux-cxlarge-arm64:
-    instance-tag: "prod-arm64-cxlarge"
+  linux-cxlarge-arm64: {}
 
-  linux-cxlarge-amd64:
-    instance-tag: "prod-amd64-cxlarge"
+  linux-cxlarge-amd64: {}
 
-  linux-c2xlarge-arm64:
-    instance-tag: "prod-arm64-c2xlarge"
+  linux-c2xlarge-arm64: {}
 
-  linux-c2xlarge-amd64:
-    instance-tag: "prod-amd64-c2xlarge"
+  linux-c2xlarge-amd64: {}
 
-  linux-c4xlarge-arm64:
-    instance-tag: "prod-arm64-c4xlarge"
+  linux-c4xlarge-arm64: {}
 
-  linux-c4xlarge-amd64:
-    instance-tag: "prod-amd64-c4xlarge"
+  linux-c4xlarge-amd64: {}
 
-  linux-c8xlarge-arm64:
-    instance-tag: "prod-arm64-c8xlarge"
+  linux-c8xlarge-arm64: {}
 
-  linux-c8xlarge-amd64:
-    instance-tag: "prod-amd64-c8xlarge"
+  linux-c8xlarge-amd64: {}
 
-  linux-d160-c8xlarge-arm64:
-    instance-tag: "prod-arm64-c8xlarge-d160"
+  linux-d160-c8xlarge-arm64: {}
 
-  linux-d160-c8xlarge-amd64:
-    instance-tag: "prod-amd64-c8xlarge-d160"
+  linux-d160-c8xlarge-amd64: {}
 
-  linux-g4xlarge-amd64:
-    instance-tag: "prod-amd64-g4xlarge"
+  linux-g4xlarge-amd64: {}
 
   linux-g64xlarge-amd64:
     ami: "ami-0133ba5e6e6d57a02"
-    instance-tag: "prod-amd64-g64xlarge"
     user-data: |
       Content-Type: multipart/mixed; boundary="//"
       MIME-Version: 1.0
@@ -237,12 +209,10 @@ dynamicConfigs:
       --//--
 
   linux-root-arm64:
-    instance-tag: "prod-arm64-root"
     sudo-commands: "/usr/bin/podman, /usr/bin/rm /usr/share/containers/mounts.conf"
     disk: "200"
 
   linux-root-amd64:
-    instance-tag: "prod-amd64-root"
     sudo-commands: "/usr/bin/podman, /usr/bin/rm /usr/share/containers/mounts.conf"
     disk: "200"
     user-data: |-
@@ -311,11 +281,9 @@ dynamicConfigs:
        --//-- 
   
 
-  linux-fast-amd64:
-    instance-tag: "prod-amd64-fast"
+  linux-fast-amd64: {}
 
-  linux-extra-fast-amd64:
-    instance-tag: "prod-amd64-extra-fast"
+  linux-extra-fast-amd64: {}
 
 # Static hosts configuration
 staticHosts:
