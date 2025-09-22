@@ -57,7 +57,7 @@ data:
   dynamic.linux-arm64.max-instances: {{ (index $config "max-instances") | default "250" | quote }}
   dynamic.linux-arm64.subnet-id: {{ default (index $arm "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-arm64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
 
   {{- if hasKey .Values.dynamicConfigs "linux-amd64" }}
@@ -74,7 +74,7 @@ data:
   dynamic.linux-amd64.max-instances: {{ (index $config "max-instances") | default "250" | quote }}
   dynamic.linux-amd64.subnet-id: {{ default (index $amd "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-amd64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-d160-amd64" }}
   {{- $config := index .Values.dynamicConfigs "linux-d160-amd64" | default (dict) }}
@@ -91,7 +91,7 @@ data:
   dynamic.linux-d160-amd64.subnet-id: {{ default (index $amd "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-d160-amd64.disk: "160"
   dynamic.linux-d160-amd64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-d160-arm64" }}
   {{- $config := index .Values.dynamicConfigs "linux-d160-arm64" | default (dict) }}
@@ -108,7 +108,7 @@ data:
   dynamic.linux-d160-arm64.subnet-id: {{ default (index $arm "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-d160-arm64.disk: "160"
   dynamic.linux-d160-arm64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
 
   {{- if hasKey .Values.dynamicConfigs "linux-mlarge-arm64" }}
@@ -125,7 +125,7 @@ data:
   dynamic.linux-mlarge-arm64.max-instances: {{ (index $config "max-instances") | default "250" | quote }}
   dynamic.linux-mlarge-arm64.subnet-id: {{ default (index $arm "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-mlarge-arm64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-mlarge-amd64" }}
   {{- $config := index .Values.dynamicConfigs "linux-mlarge-amd64" | default (dict) }}
@@ -141,7 +141,7 @@ data:
   dynamic.linux-mlarge-amd64.max-instances: {{ (index $config "max-instances") | default "250" | quote }}
   dynamic.linux-mlarge-amd64.subnet-id: {{ default (index $amd "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-mlarge-amd64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-d160-mlarge-arm64" }}
   {{- $config := index .Values.dynamicConfigs "linux-d160-mlarge-arm64" | default (dict) }}
@@ -158,7 +158,7 @@ data:
   dynamic.linux-d160-mlarge-arm64.subnet-id: {{ default (index $arm "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-d160-mlarge-arm64.disk: "160"
   dynamic.linux-d160-mlarge-arm64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-d160-mlarge-amd64" }}
   {{- $config := index .Values.dynamicConfigs "linux-d160-mlarge-amd64" | default (dict) }}
@@ -175,7 +175,7 @@ data:
   dynamic.linux-d160-mlarge-amd64.subnet-id: {{ default (index $amd "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-d160-mlarge-amd64.disk: "160"
   dynamic.linux-d160-mlarge-amd64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-mxlarge-arm64" }}
   {{- $config := index .Values.dynamicConfigs "linux-mxlarge-arm64" | default (dict) }}
@@ -191,7 +191,7 @@ data:
   dynamic.linux-mxlarge-arm64.max-instances: {{ (index $config "max-instances") | default "250" | quote }}
   dynamic.linux-mxlarge-arm64.subnet-id: {{ default (index $arm "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-mxlarge-arm64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-mxlarge-amd64" }}
   {{- $config := index .Values.dynamicConfigs "linux-mxlarge-amd64" | default (dict) }}
@@ -207,7 +207,7 @@ data:
   dynamic.linux-mxlarge-amd64.max-instances: {{ (index $config "max-instances") | default "250" | quote }}
   dynamic.linux-mxlarge-amd64.subnet-id: {{ default (index $amd "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-mxlarge-amd64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-d160-mxlarge-arm64" }}
   {{- $config := index .Values.dynamicConfigs "linux-d160-mxlarge-arm64" | default (dict) }}
@@ -224,7 +224,7 @@ data:
   dynamic.linux-d160-mxlarge-arm64.subnet-id: {{ default (index $arm "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-d160-mxlarge-arm64.disk: "160"
   dynamic.linux-d160-mxlarge-arm64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-d160-mxlarge-amd64" }}
   {{- $config := index .Values.dynamicConfigs "linux-d160-mxlarge-amd64" | default (dict) }}
@@ -241,7 +241,7 @@ data:
   dynamic.linux-d160-mxlarge-amd64.subnet-id: {{ default (index $amd "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-d160-mxlarge-amd64.disk: "160"
   dynamic.linux-d160-mxlarge-amd64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-m2xlarge-arm64" }}
   {{- $config := index .Values.dynamicConfigs "linux-m2xlarge-arm64" | default (dict) }}
@@ -257,7 +257,7 @@ data:
   dynamic.linux-m2xlarge-arm64.max-instances: {{ (index $config "max-instances") | default "250" | quote }}
   dynamic.linux-m2xlarge-arm64.subnet-id: {{ default (index $arm "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-m2xlarge-arm64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-m2xlarge-amd64" }}
   {{- $config := index .Values.dynamicConfigs "linux-m2xlarge-amd64" | default (dict) }}
@@ -273,7 +273,7 @@ data:
   dynamic.linux-m2xlarge-amd64.max-instances: {{ (index $config "max-instances") | default "250" | quote }}
   dynamic.linux-m2xlarge-amd64.subnet-id: {{ default (index $amd "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-m2xlarge-amd64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-d160-m2xlarge-arm64" }}
   {{- $config := index .Values.dynamicConfigs "linux-d160-m2xlarge-arm64" | default (dict) }}
@@ -290,7 +290,7 @@ data:
   dynamic.linux-d160-m2xlarge-arm64.subnet-id: {{ default (index $arm "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-d160-m2xlarge-arm64.disk: "160"
   dynamic.linux-d160-m2xlarge-arm64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-d160-m2xlarge-amd64" }}
   {{- $config := index .Values.dynamicConfigs "linux-d160-m2xlarge-amd64" | default (dict) }}
@@ -307,7 +307,7 @@ data:
   dynamic.linux-d160-m2xlarge-amd64.subnet-id: {{ default (index $amd "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-d160-m2xlarge-amd64.disk: "160"
   dynamic.linux-d160-m2xlarge-amd64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-m4xlarge-arm64" }}
   {{- $config := index .Values.dynamicConfigs "linux-m4xlarge-arm64" | default (dict) }}
@@ -323,7 +323,7 @@ data:
   dynamic.linux-m4xlarge-arm64.max-instances: {{ (index $config "max-instances") | default "250" | quote }}
   dynamic.linux-m4xlarge-arm64.subnet-id: {{ default (index $arm "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-m4xlarge-arm64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-m4xlarge-amd64" }}
   {{- $config := index .Values.dynamicConfigs "linux-m4xlarge-amd64" | default (dict) }}
@@ -339,7 +339,7 @@ data:
   dynamic.linux-m4xlarge-amd64.max-instances: {{ (index $config "max-instances") | default "250" | quote }}
   dynamic.linux-m4xlarge-amd64.subnet-id: {{ default (index $amd "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-m4xlarge-amd64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-d160-m4xlarge-arm64" }}
   {{- $config := index .Values.dynamicConfigs "linux-d160-m4xlarge-arm64" | default (dict) }}
@@ -356,7 +356,7 @@ data:
   dynamic.linux-d160-m4xlarge-arm64.subnet-id: {{ default (index $arm "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-d160-m4xlarge-arm64.disk: "160"
   dynamic.linux-d160-m4xlarge-arm64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-d160-m4xlarge-amd64" }}
   {{- $config := index .Values.dynamicConfigs "linux-d160-m4xlarge-amd64" | default (dict) }}
@@ -373,7 +373,7 @@ data:
   dynamic.linux-d160-m4xlarge-amd64.subnet-id: {{ default (index $amd "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-d160-m4xlarge-amd64.disk: "160"
   dynamic.linux-d160-m4xlarge-amd64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-m8xlarge-arm64" }}
   {{- $config := index .Values.dynamicConfigs "linux-m8xlarge-arm64" | default (dict) }}
@@ -389,7 +389,7 @@ data:
   dynamic.linux-m8xlarge-arm64.max-instances: {{ (index $config "max-instances") | default "250" | quote }}
   dynamic.linux-m8xlarge-arm64.subnet-id: {{ default (index $arm "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-m8xlarge-arm64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-m8xlarge-amd64" }}
   {{- $config := index .Values.dynamicConfigs "linux-m8xlarge-amd64" | default (dict) }}
@@ -405,7 +405,7 @@ data:
   dynamic.linux-m8xlarge-amd64.max-instances: {{ (index $config "max-instances") | default "250" | quote }}
   dynamic.linux-m8xlarge-amd64.subnet-id: {{ default (index $amd "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-m8xlarge-amd64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-d160-m7-8xlarge-amd64" }}
   {{- $config := index .Values.dynamicConfigs "linux-d160-m7-8xlarge-amd64" | default (dict) }}
@@ -422,7 +422,7 @@ data:
   dynamic.linux-d160-m7-8xlarge-amd64.subnet-id: {{ default (index $amd "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-d160-m7-8xlarge-amd64.disk: "160"
   dynamic.linux-d160-m7-8xlarge-amd64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-d160-m8-8xlarge-arm64" }}
   {{- $config := index .Values.dynamicConfigs "linux-d160-m8-8xlarge-arm64" | default (dict) }}
@@ -439,7 +439,7 @@ data:
   dynamic.linux-d160-m8-8xlarge-arm64.subnet-id: {{ default (index $arm "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-d160-m8-8xlarge-arm64.disk: "160"
   dynamic.linux-d160-m8-8xlarge-arm64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
 
   {{- if hasKey .Values.dynamicConfigs "linux-d160-m8xlarge-arm64" }}
@@ -457,7 +457,7 @@ data:
   dynamic.linux-d160-m8xlarge-arm64.subnet-id: {{ default (index $arm "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-d160-m8xlarge-arm64.disk: "160"
   dynamic.linux-d160-m8xlarge-arm64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-d160-m8xlarge-amd64" }}
   {{- $config := index .Values.dynamicConfigs "linux-d160-m8xlarge-amd64" | default (dict) }}
@@ -474,7 +474,7 @@ data:
   dynamic.linux-d160-m8xlarge-amd64.subnet-id: {{ default (index $amd "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-d160-m8xlarge-amd64.disk: "160"
   dynamic.linux-d160-m8xlarge-amd64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-c6gd2xlarge-arm64" }}
   {{- $config := index .Values.dynamicConfigs "linux-c6gd2xlarge-arm64" | default (dict) }}
@@ -491,13 +491,13 @@ data:
   dynamic.linux-c6gd2xlarge-arm64.subnet-id: {{ default (index $arm "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-c6gd2xlarge-arm64.allocation-timeout: "1200"
   {{- if (index $config "user-data") }}
-  dynamic.linux-c6gd2xlarge-arm64$config.user-data: |
+  dynamic.linux-c6gd2xlarge-arm64.user-data: |
   {{- $lines := splitList "\n" (index $config "user-data") }}
   {{- range $line := $lines }}
     {{ $line }}
   {{- end }}
   {{- end }}
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-cxlarge-arm64" }}
   {{- $config := index .Values.dynamicConfigs "linux-cxlarge-arm64" | default (dict) }}
@@ -513,7 +513,7 @@ data:
   dynamic.linux-cxlarge-arm64.max-instances: {{ (index $config "max-instances") | default "250" | quote }}
   dynamic.linux-cxlarge-arm64.subnet-id: {{ default (index $arm "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-cxlarge-arm64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-cxlarge-amd64" }}
   {{- $config := index .Values.dynamicConfigs "linux-cxlarge-amd64" | default (dict) }}
@@ -529,7 +529,7 @@ data:
   dynamic.linux-cxlarge-amd64.max-instances: {{ (index $config "max-instances") | default "250" | quote }}
   dynamic.linux-cxlarge-amd64.subnet-id: {{ default (index $amd "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-cxlarge-amd64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-d160-cxlarge-arm64" }}
   {{- $config := index .Values.dynamicConfigs "linux-d160-cxlarge-arm64" | default (dict) }}
@@ -546,7 +546,7 @@ data:
   dynamic.linux-d160-cxlarge-arm64.subnet-id: {{ default (index $arm "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-d160-cxlarge-arm64.disk: "160"
   dynamic.linux-d160-cxlarge-arm64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-d160-cxlarge-amd64" }}
   {{- $config := index .Values.dynamicConfigs "linux-d160-cxlarge-amd64" | default (dict) }}
@@ -563,7 +563,7 @@ data:
   dynamic.linux-d160-cxlarge-amd64.subnet-id: {{ default (index $amd "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-d160-cxlarge-amd64.disk: "160"
   dynamic.linux-d160-cxlarge-amd64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-c2xlarge-arm64" }}
   {{- $config := index .Values.dynamicConfigs "linux-c2xlarge-arm64" | default (dict) }}
@@ -579,7 +579,7 @@ data:
   dynamic.linux-c2xlarge-arm64.max-instances: {{ (index $config "max-instances") | default "250" | quote }}
   dynamic.linux-c2xlarge-arm64.subnet-id: {{ default (index $arm "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-c2xlarge-arm64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-c2xlarge-amd64" }}
   {{- $config := index .Values.dynamicConfigs "linux-c2xlarge-amd64" | default (dict) }}
@@ -595,7 +595,7 @@ data:
   dynamic.linux-c2xlarge-amd64.max-instances: {{ (index $config "max-instances") | default "250" | quote }}
   dynamic.linux-c2xlarge-amd64.subnet-id: {{ default (index $amd "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-c2xlarge-amd64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-d160-c2xlarge-arm64" }}
   {{- $config := index .Values.dynamicConfigs "linux-d160-c2xlarge-arm64" | default (dict) }}
@@ -612,7 +612,7 @@ data:
   dynamic.linux-d160-c2xlarge-arm64.subnet-id: {{ default (index $arm "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-d160-c2xlarge-arm64.disk: "160"
   dynamic.linux-d160-c2xlarge-arm64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-d160-c2xlarge-amd64" }}
   {{- $config := index .Values.dynamicConfigs "linux-d160-c2xlarge-amd64" | default (dict) }}
@@ -629,7 +629,7 @@ data:
   dynamic.linux-d160-c2xlarge-amd64.subnet-id: {{ default (index $amd "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-d160-c2xlarge-amd64.disk: "160"
   dynamic.linux-d160-c2xlarge-amd64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-c4xlarge-arm64" }}
   {{- $config := index .Values.dynamicConfigs "linux-c4xlarge-arm64" | default (dict) }}
@@ -645,7 +645,7 @@ data:
   dynamic.linux-c4xlarge-arm64.max-instances: {{ (index $config "max-instances") | default "250" | quote }}
   dynamic.linux-c4xlarge-arm64.subnet-id: {{ default (index $arm "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-c4xlarge-arm64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-c4xlarge-amd64" }}
   {{- $config := index .Values.dynamicConfigs "linux-c4xlarge-amd64" | default (dict) }}
@@ -661,7 +661,7 @@ data:
   dynamic.linux-c4xlarge-amd64.max-instances: {{ (index $config "max-instances") | default "250" | quote }}
   dynamic.linux-c4xlarge-amd64.subnet-id: {{ default (index $amd "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-c4xlarge-amd64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-d160-c4xlarge-arm64" }}
   {{- $config := index .Values.dynamicConfigs "linux-d160-c4xlarge-arm64" | default (dict) }}
@@ -678,7 +678,7 @@ data:
   dynamic.linux-d160-c4xlarge-arm64.subnet-id: {{ default (index $arm "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-d160-c4xlarge-arm64.disk: "160"
   dynamic.linux-d160-c4xlarge-arm64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-d160-c4xlarge-amd64" }}
   {{- $config := index .Values.dynamicConfigs "linux-d160-c4xlarge-amd64" | default (dict) }}
@@ -695,7 +695,7 @@ data:
   dynamic.linux-d160-c4xlarge-amd64.subnet-id: {{ default (index $amd "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-d160-c4xlarge-amd64.disk: "160"
   dynamic.linux-d160-c4xlarge-amd64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-d320-c4xlarge-arm64" }}
   {{- $config := index .Values.dynamicConfigs "linux-d320-c4xlarge-arm64" | default (dict) }}
@@ -712,7 +712,7 @@ data:
   dynamic.linux-d320-c4xlarge-arm64.subnet-id: {{ default (index $arm "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-d320-c4xlarge-arm64.disk: "320"
   dynamic.linux-d320-c4xlarge-arm64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-d320-c4xlarge-amd64" }}
   {{- $config := index .Values.dynamicConfigs "linux-d320-c4xlarge-amd64" | default (dict) }}
@@ -729,7 +729,7 @@ data:
   dynamic.linux-d320-c4xlarge-amd64.subnet-id: {{ default (index $amd "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-d320-c4xlarge-amd64.disk: "320"
   dynamic.linux-d320-c4xlarge-amd64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-c8xlarge-arm64" }}
   {{- $config := index .Values.dynamicConfigs "linux-c8xlarge-arm64" | default (dict) }}
@@ -745,7 +745,7 @@ data:
   dynamic.linux-c8xlarge-arm64.max-instances: {{ (index $config "max-instances") | default "250" | quote }}
   dynamic.linux-c8xlarge-arm64.subnet-id: {{ default (index $arm "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-c8xlarge-arm64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-c8xlarge-amd64" }}
   {{- $config := index .Values.dynamicConfigs "linux-c8xlarge-amd64" | default (dict) }}
@@ -761,7 +761,7 @@ data:
   dynamic.linux-c8xlarge-amd64.max-instances: {{ (index $config "max-instances") | default "250" | quote }}
   dynamic.linux-c8xlarge-amd64.subnet-id: {{ default (index $amd "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-c8xlarge-amd64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-d160-c8xlarge-arm64" }}
   {{- $config := index .Values.dynamicConfigs "linux-d160-c8xlarge-arm64" | default (dict) }}
@@ -778,7 +778,7 @@ data:
   dynamic.linux-d160-c8xlarge-arm64.subnet-id: {{ default (index $arm "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-d160-c8xlarge-arm64.disk: "160"
   dynamic.linux-d160-c8xlarge-arm64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-d160-c8xlarge-amd64" }}
   {{- $config := index .Values.dynamicConfigs "linux-d160-c8xlarge-amd64" | default (dict) }}
@@ -795,7 +795,7 @@ data:
   dynamic.linux-d160-c8xlarge-amd64.subnet-id: {{ default (index $amd "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-d160-c8xlarge-amd64.disk: "160"
   dynamic.linux-d160-c8xlarge-amd64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   # GPU Instances
   {{- if hasKey .Values.dynamicConfigs "linux-g6xlarge-amd64" }}
@@ -813,13 +813,13 @@ data:
   dynamic.linux-g6xlarge-amd64.instance-tag: {{ (index $config "instance-tag") | default (printf "%s-amd64-g6xlarge" $environment) | quote }}
   dynamic.linux-g6xlarge-amd64.allocation-timeout: "1200"
   {{- if (index $config "user-data") }}
-  dynamic.linux-g6xlarge-amd64$config.user-data: |
+  dynamic.linux-g6xlarge-amd64.user-data: |
   {{- $lines := splitList "\n" (index $config "user-data") }}
   {{- range $line := $lines }}
     {{ $line }}
   {{- end }}
   {{- end }}
-  {{- end }}
+  {{ end }}
 
 
   {{- if hasKey .Values.dynamicConfigs "linux-g64xlarge-amd64" }}
@@ -837,13 +837,13 @@ data:
   dynamic.linux-g64xlarge-amd64.instance-tag: {{ (index $config "instance-tag") | default (printf "%s-amd64-g64xlarge" $environment) | quote }}
   dynamic.linux-g64xlarge-amd64.allocation-timeout: "1200"
   {{- if (index $config "user-data") }}
-  dynamic.linux-g64xlarge-amd64$config.user-data: |
+  dynamic.linux-g64xlarge-amd64.user-data: |
   {{- $lines := splitList "\n" (index $config "user-data") }}
   {{- range $line := $lines }}
     {{ $line }}
+  {{ end }}
   {{- end }}
-  {{- end }}
-  {{- end }}
+  {{ end }}
 
 
 
@@ -865,13 +865,13 @@ data:
   dynamic.linux-root-arm64.disk: {{ index $config "disk" | default "200" | quote }}
   dynamic.linux-root-arm64.allocation-timeout: "1200"
   {{- if (index $config "user-data") }}
-  dynamic.linux-root-arm64$config.user-data: |
+  dynamic.linux-root-arm64.user-data: |
   {{- $lines := splitList "\n" (index $config "user-data") }}
   {{- range $line := $lines }}
     {{ $line }}
+  {{ end }}
   {{- end }}
-  {{- end }}
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-root-amd64" }}
   {{- $config := index .Values.dynamicConfigs "linux-root-amd64" | default (dict) }}
@@ -890,13 +890,13 @@ data:
   dynamic.linux-root-amd64.disk: {{index $config "disk" | default "200" | quote }}
   dynamic.linux-root-amd64.allocation-timeout: "1200"
   {{- if (index $config "user-data") }}
-  dynamic.linux-root-amd64$config.user-data: |
+  dynamic.linux-root-amd64.user-data: |
   {{- $lines := splitList "\n" (index $config "user-data") }}
   {{- range $line := $lines }}
     {{ $line }}
   {{- end }}
   {{- end }}
-  {{- end }}
+  {{ end }}
 
   # Fast platforms for production
   {{- if hasKey .Values.dynamicConfigs "linux-fast-amd64" }}
@@ -914,7 +914,7 @@ data:
   dynamic.linux-fast-amd64.subnet-id: {{ default (index $amd "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-fast-amd64.disk: {{ index $config "disk" | default "200" | quote }}
   dynamic.linux-fast-amd64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   {{- if hasKey .Values.dynamicConfigs "linux-extra-fast-amd64" }}
   {{- $config := index .Values.dynamicConfigs "linux-extra-fast-amd64" | default (dict) }}
@@ -931,7 +931,7 @@ data:
   dynamic.linux-extra-fast-amd64.subnet-id: {{ default (index $amd "subnet-id") ((index $config "subnet-id")) | quote }}
   dynamic.linux-extra-fast-amd64.disk: {{ index $config "disk" | default "200" | quote }}
   dynamic.linux-extra-fast-amd64.allocation-timeout: "1200"
-  {{- end }}
+  {{ end }}
 
   # Static hosts configuration
   {{- range $host, $config := .Values.staticHosts }}
