@@ -67,7 +67,7 @@ dynamicConfigs:
   linux-m8xlarge-arm64: {}
 
   linux-m8xlarge-amd64:
-    instance-type: "m7a.8xlarge"v
+    instance-type: "m7a.8xlarge"
 
   linux-c6gd2xlarge-arm64:
     user-data: |

@@ -153,17 +153,17 @@ main() {
         python3 "$cli" "$input_file" "$output_file"
     done
     
-    # Clean up generated files
-    if [[ ${#generated_files[@]} -gt 0 ]]; then
-        echo ""
-        echo "Cleaning up generated host-config.yaml files..."
-        for generated_file in "${generated_files[@]}"; do
-            if [[ -f "$generated_file" ]]; then
-                rm -f "$generated_file"
-                echo "Removed generated file: $generated_file"
-            fi
-        done
-    fi
+#    # Clean up generated files
+#    if [[ ${#generated_files[@]} -gt 0 ]]; then
+#        echo ""
+#        echo "Cleaning up generated host-config.yaml files..."
+#        for generated_file in "${generated_files[@]}"; do
+#            if [[ -f "$generated_file" ]]; then
+#                rm -f "$generated_file"
+#                echo "Removed generated file: $generated_file"
+#            fi
+#        done
+#    fi
 
     # Verify no changes if flag is set
     if [[ "$verify_no_change" != "true" ]]; then
