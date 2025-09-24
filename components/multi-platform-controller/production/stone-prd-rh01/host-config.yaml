@@ -1,5 +1,5 @@
 ---
-# Source: multi-platform-controller-host-config/templates/host-config.yaml
+# Source: host-config-chart/templates/host-config.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:

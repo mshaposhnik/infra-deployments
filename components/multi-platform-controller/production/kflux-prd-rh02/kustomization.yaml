@@ -17,7 +17,7 @@ helmGlobals:
   chartHome: ../../base
 
 helmCharts:
-- name: multi-platform-controller-host-config
+- name: host-config-chart
   releaseName: hosts-config
   namespace: multi-platform-controller
   valuesFile: host-values.yaml
